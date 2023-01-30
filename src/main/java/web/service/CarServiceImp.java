@@ -10,14 +10,6 @@ import java.util.stream.Stream;
 @Service
 public class CarServiceImp implements CarService {
 
-
-//    Car car1 = new Car("BMW", "Blue", "1990");
-//    Car car2 = new Car("Ford", "White", "1998");
-//    Car car3 = new Car("Audi", "green", "2005");
-//    Car car4 = new Car("Mercedes-Benz", "Silver", "2014");
-//    Car car5 = new Car("Lada", "Red", "2002");
-
-
     List<Car> carList = Stream.of(new Car("Ford", "White", "1998")
                     , new Car("Audi", "green", "2005")
                     , new Car("Mercedes-Benz", "Silver", "2014")
@@ -29,6 +21,7 @@ public class CarServiceImp implements CarService {
     public List<Car> getAllCars() {
         return carList.stream().collect(Collectors.toList());
     }
+
     @Override
     public List<Car> getAllCarsByCount(int count) {
         return carList.stream().limit(count).collect(Collectors.toList());

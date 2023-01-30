@@ -14,30 +14,31 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("cars")
+@RequestMapping()
 public class CarController {
     @Autowired
     CarService carService;
 
-    @GetMapping
-    public String getAllCars(ModelMap model){
+    @GetMapping("cars")
+    public String getAllCars(ModelMap model) {
         List<Car> list = carService.getAllCars();
         List<String> messages = new ArrayList<>();
-        for(Car c : list) {
-            messages.add(c.getModel()+" "+c.getColor()+" "+c.getYear());
+        StringBuilder s;
+        for (Car c : list) {
+            messages.add(c.getModel() + " " + c.getColor() + " " + c.getYear());
         }
         model.addAttribute("messages", messages);
         return "cars";
     }
 
-    @GetMapping("{count}")
-    public String getCars(ModelMap model, @PathVariable int count){
+    @GetMapping("cars/{count}")
+    public String getCars(ModelMap model, @PathVariable int count) {
         List<Car> list = carService.getAllCarsByCount(count);
         List<String> messages = new ArrayList<>();
-        for(Car c : list) {
-            messages.add(c.getModel()+" "+c.getColor()+" "+c.getYear());
+        for (Car c : list) {
+            messages.add(c.getModel() + " " + c.getColor() + " " + c.getYear());
         }
         model.addAttribute("messages", messages);
-    return "cars";
+        return "cars";
     }
 }
