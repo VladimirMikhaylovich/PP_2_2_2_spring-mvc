@@ -33,7 +33,7 @@ public class CarController {
 
     @GetMapping("cars/{count}")
     public String getCars(ModelMap model, @PathVariable int count) {
-        if(count>5) carService.getAllCars();
+        if(count>=5) carService.getAllCars();
         List<Car> list = carService.getAllCarsByCount(count);
         List<String> messages = new ArrayList<>();
         for (Car c : list) {

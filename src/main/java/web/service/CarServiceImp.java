@@ -19,7 +19,7 @@ public class CarServiceImp implements CarService {
 
     @Override
     public List<Car> getAllCars() {
-        return carList.stream().collect(Collectors.toList());
+        return carList;
     }
 
     @Override
